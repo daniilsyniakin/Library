@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог книг</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Облік книг бібліотеки</h1>
+</header>
+<main>
+    <h2 th:text="${title}">Каталог книг</h2>
+    <p th:text="'Усього книг: ' + ${books.size()}">Усього книг: 0</p>
+
+    <table th:if="${!books.isEmpty()}">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Назва</th>
+            <th>Автор</th>
+            <th>Рік</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.id}">1</td>
+            <td th:text="${book.title}">Назва книги</td>
+            <td th:text="${book.author}">Автор</td>
+            <td th:text="${book.year}">2000</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p th:if="${books.isEmpty()}">У каталозі поки немає книг.</p>
+</main>
+</body>
+</html>
